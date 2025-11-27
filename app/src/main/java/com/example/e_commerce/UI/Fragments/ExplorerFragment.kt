@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
+import com.example.e_commerce.R
 import com.example.e_commerce.Model.BrandModel
 import com.example.e_commerce.Model.MainViewModel
 import com.example.e_commerce.Model.Product
@@ -29,26 +30,21 @@ import com.example.e_commerce.UI.BaseActivity
 import com.example.e_commerce.UI.CartActivity
 import com.example.e_commerce.databinding.FragmentExplorerBinding
 
-/**
- * ExplorerFragment: Contiene los Banners, Marcas y Productos Populares.
- * Migrado de HomeActivity.
- */
 class ExplorerFragment : Fragment() {
 
-    // Cambiamos a _binding de Fragment
     private var _binding: FragmentExplorerBinding? = null
     private val binding get() = _binding!!
 
-    // El ViewModel se comparte con la Activity contenedora o se inicializa con la Factory
-    private lateinit var viewModel: MainViewModel // Será inicializado en onViewCreated
+    private lateinit var viewModel: MainViewModel
     private lateinit var profileViewModel: ProfileViewModel
 
     private lateinit var handler: Handler
     private lateinit var autoScrollRunnable: Runnable
-    private val SCROLL_DELAY: Long = 5000 // 5 segundos de retardo
+    private val SCROLL_DELAY: Long = 5000
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         _binding = FragmentExplorerBinding.inflate(inflater, container, false)
         return binding.root
@@ -69,6 +65,14 @@ class ExplorerFragment : Fragment() {
         initBanner()
         initBrand()
         initPopular()
+
+        // Listener para el botón de búsqueda
+        binding.imageView2.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, SearchFragment()) // Reemplaza el fragmento actual por el de búsqueda
+                .addToBackStack(null) // Permite volver atrás
+                .commit()
+        }
 
         binding.NavBtnCart.setOnClickListener {
             val intent = Intent(requireContext(), CartActivity::class.java)
@@ -115,8 +119,8 @@ class ExplorerFragment : Fragment() {
             )
             binding.viewBrand.adapter = BrandAdapter(items as MutableList<BrandModel>, { brandId ->
                 manageProductFilter(brandId)
-            }) { brandId ->
-                manageProductFilter(brandId)
+            }) { position ->
+                centerBrandItem(position)
             }
             binding.progressBarBrand.visibility = View.GONE
         }
@@ -196,7 +200,6 @@ class ExplorerFragment : Fragment() {
     private fun setupAutoScroll(listSize: Int) {
         autoScrollRunnable = object : Runnable {
             override fun run() {
-                // Solo ejecutar si el binding no es nulo
                 _binding?.let {
                     val currentItem = it.viewPagerSlider.currentItem
                     val nextItem = if (currentItem == listSize - 1) 0 else currentItem + 1

@@ -4,19 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#00FFFFFF">
-
+    android:background="#00FFFFFF"
+    android:orientation="vertical">
 
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="?attr/actionBarSize">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -43,37 +44,41 @@
                         android:id="@+id/tvUserName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Usuario"
-                        android:textSize="@dimen/text_size_title"
-                        android:textColor="@color/black"
+                        android:ellipsize="end"
                         android:fontFamily="sans-serif-medium"
-                        android:textStyle="bold"
                         android:maxLines="1"
-                        android:ellipsize="end" />
+                        android:text="Usuario"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_title"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
                 <ImageView
                     android:id="@+id/imageView3"
-                    android:layout_width="42dp"
-                    android:layout_height="42dp"
-                    android:layout_marginEnd="16dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="8dp"
+                    android:adjustViewBounds="true"
                     app:srcCompat="@drawable/bell_icon" />
 
                 <ImageView
                     android:id="@+id/imageView2"
-                    android:layout_width="42dp"
-                    android:layout_height="42dp"
-                    android:layout_marginEnd="16dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="8dp"
+                    android:adjustViewBounds="true"
                     app:srcCompat="@drawable/search_icon" />
 
                 <ImageView
                     android:id="@+id/NavBtnCart"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
-                    app:tint="@color/black"
-                    app:srcCompat="@drawable/btn_2"
                     android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="8dp"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@drawable/btn_2"
+                    app:tint="@color/black"
                     tools:ignore="ContentDescription" />
 
 
@@ -81,8 +86,18 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="16dp">
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPagerSlider"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:paddingHorizontal="12dp"
+                    app:layout_constraintDimensionRatio="16:9"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ProgressBar
                     android:id="@+id/progressBar"
@@ -94,30 +109,20 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <androidx.viewpager2.widget.ViewPager2
-                    android:id="@+id/viewPagerSlider"
-                    android:layout_width="match_parent"
-                    android:layout_height="160dp"
-                    android:paddingHorizontal="12dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
                 <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
                     android:id="@+id/dotIndicator"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="8dp"
                     android:visibility="gone"
                     app:dotsColor="@color/gray"
                     app:dotsCornerRadius="8dp"
                     app:dotsSize="6dp"
                     app:dotsSpacing="2dp"
                     app:dotsWidthFactor="2.5"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/viewPagerSlider"
+                    app:layout_constraintBottom_toBottomOf="@id/viewPagerSlider"
+                    app:layout_constraintEnd_toEndOf="@id/viewPagerSlider"
+                    app:layout_constraintStart_toStartOf="@id/viewPagerSlider"
                     app:selectedDotColor="@color/background_component"
                     tools:visibility="visible" />
 
@@ -125,7 +130,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/padding_xl"
                 android:layout_marginTop="@dimen/spacing_lg"
                 android:orientation="horizontal">
@@ -135,10 +140,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Offical Brand"
+                    android:fontFamily="sans-serif-medium"
+                    android:padding="10dp"
+                    android:text="Grandes marcas"
                     android:textColor="@color/md_theme_on_surface"
                     android:textSize="@dimen/text_size_xl"
-                    android:fontFamily="sans-serif-medium"
                     android:textStyle="bold" />
 
                 <TextView
@@ -152,7 +158,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
                 <ProgressBar
                     android:id="@+id/progressBarBrand"
@@ -167,10 +173,10 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/viewBrand"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:clipToPadding="false"
-                    android:paddingHorizontal="16dp"
                     android:foregroundGravity="center"
+                    android:paddingHorizontal="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -179,7 +185,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/padding_xl"
                 android:layout_marginTop="@dimen/spacing_lg"
                 android:orientation="horizontal">
@@ -189,10 +195,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Recommendation"
+                    android:fontFamily="sans-serif-medium"
+                    android:padding="10dp"
+                    android:text="Recomendaciones"
                     android:textColor="@color/md_theme_on_surface"
                     android:textSize="@dimen/text_size_xl"
-                    android:fontFamily="sans-serif-medium"
                     android:textStyle="bold" />
 
                 <TextView
@@ -206,16 +213,20 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/viewPopular"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    android:paddingHorizontal="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:itemCount="6"
+                    tools:listitem="@layout/viewholder_popular" />
 
                 <ProgressBar
                     android:id="@+id/progressBarPopular"

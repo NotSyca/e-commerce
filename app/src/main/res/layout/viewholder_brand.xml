@@ -1,35 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Item de producto para el RecyclerView con diseño mejorado -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mainLayout"
-    android:layout_width="wrap_content"
+    android:layout_width="88dp"
     android:layout_height="wrap_content"
-    android:layout_marginStart="8dp"
-    android:layout_marginTop="8dp"
-    android:layout_marginEnd="16dp">
+    android:layout_margin="4dp"
+    app:cardBackgroundColor="@android:color/transparent"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="0dp"
+    app:strokeColor="@color/gray_300"
+    app:strokeWidth="1dp">
 
-    <ImageView
-        android:id="@+id/pic"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_weight="1"
-        android:background="@drawable/grey_bg"
-        android:padding="2dp"
-        android:src="@drawable/grey_bg" />
-
-    <TextView
-        android:id="@+id/title_pic"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/mainLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginEnd="8dp"
-        android:layout_weight="1"
-        android:text="title"
-        android:textColor="@color/black"
-        android:textSize="12sp"
-        android:visibility="gone"
-        tools:visibility="visible" />
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="16dp">
 
-</LinearLayout>
+        <ImageView
+            android:id="@+id/pic"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:padding="2dp"
+            tools:src="@drawable/grey_bg" />
+
+        <TextView
+            android:id="@+id/title_pic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            tools:text="Marca" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
