@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.e_commerce.Api.TokenManager
 import com.example.e_commerce.R
+import com.example.e_commerce.UI.EditCategoryFragment
 import com.example.e_commerce.databinding.FragmentSettingsBinding // Asume el binding correcto
 
 class SettingsFragment : Fragment() {
@@ -50,6 +51,12 @@ class SettingsFragment : Fragment() {
         binding.optionAddCategoria.setOnClickListener {
             navigateToFragment(AddCategoryFragment())
         }
+
+        binding.optionEditCategoria.setOnClickListener {
+            navigateToFragment(EditCategoryFragment())
+        }
+
+
 
 
         // Ejemplo: Notificaciones

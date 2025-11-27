@@ -230,6 +230,31 @@
                             app:tint="@color/black"
                             tools:ignore="ContentDescription" />
                     </LinearLayout>
+
+                    <View
+                        style="@style/Divider"
+                        android:layout_marginHorizontal="@dimen/padding_lg" />
+
+                    <LinearLayout
+                        android:id="@+id/optionEditCategoria"
+                        style="@style/SettingsOptionStyle"
+                        android:background="?attr/selectableItemBackground">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Editar/Eliminar Categorias"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_md" />
+
+                        <ImageView
+                            android:layout_width="@dimen/icon_size_md"
+                            android:layout_height="@dimen/icon_size_md"
+                            app:srcCompat="@android:drawable/ic_menu_add"
+                            app:tint="@color/black"
+                            tools:ignore="ContentDescription" />
+                    </LinearLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
