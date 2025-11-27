@@ -1,5 +1,6 @@
 package com.example.e_commerce.Helper
 
+import OrderItem
 import android.R
 import android.content.Context
 import android.util.Log
@@ -45,7 +46,6 @@ class ManagmentCart(
 ) {
 
     private val scope = CoroutineScope(Dispatchers.IO)
-
     private val CART_ITEMS_TABLE = "cart_items"
     private val CARTS_TABLE = "carts"
 
@@ -90,9 +90,23 @@ class ManagmentCart(
         }
     }
 
-    /**
-     * Inserta o actualiza la cantidad de un producto en el carrito del usuario.
-     */
+    private suspend fun getOrderItems(): List<CartProductDetail> = withContext(Dispatchers.IO) {
+        return@withContext getListCart()
+    }
+
+    suspend fun getCartItemsForCheckout(): List<OrderItem> {
+        val cartDetails = getOrderItems()
+
+        return cartDetails.map { detail ->
+            OrderItem(
+                product_id = detail.product_id,
+                quantity = detail.quantity,
+                // Precio debe ser unitario, usando el precio actual del producto cargado
+                unit_price_cents = detail.product.price?.toDouble() ?: 0.0,
+                selected_size = detail.size
+            )
+        }
+    }
     private suspend fun updateCartItem(
         cartId: Int,
         item: Product,
@@ -184,10 +198,6 @@ class ManagmentCart(
         }
     }
 
-    // -------------------------------------------------------------------
-    // Funciones Públicas Sincronizadas (Lanzan Coroutine)
-    // -------------------------------------------------------------------
-
     fun insertFood(item: Product, quantityChange: Int = 1, selectedSize: String) {
         scope.launch {
             val userId = tokenManager.getUserId() ?: return@launch
@@ -205,9 +215,6 @@ class ManagmentCart(
         }
     }
 
-    /**
-     * Obtiene los ítems del carrito con sus detalles de producto.
-     */
     suspend fun getListCart(): List<CartProductDetail> = withContext(Dispatchers.IO) {
         val userId = tokenManager.getUserId() ?: return@withContext emptyList()
         val cartId = getOrCreateActiveCartId(userId) ?: return@withContext emptyList()
@@ -252,9 +259,6 @@ class ManagmentCart(
         }
     }
 
-    /**
-     * Calcula el costo total de los ítems en el carrito.
-     */
     suspend fun getTotalFee(): Double = withContext(Dispatchers.IO) {
         val userId = tokenManager.getUserId() ?: return@withContext 0.0
         val cartId = getOrCreateActiveCartId(userId) ?: return@withContext 0.0
@@ -274,6 +278,22 @@ class ManagmentCart(
         } catch (e: Exception) {
             Log.e("ManagmentCart", "Error al calcular la tarifa total: ${e.message}")
             return@withContext 0.0
+        }
+    }
+
+    suspend fun clearCartItems(cartId: Int): Boolean = withContext(Dispatchers.IO) {
+        try {
+            Log.d("ManagmentCart", "Limpiando ítems del carrito ID: $cartId")
+
+            // Eliminar todas las filas de cart_items asociadas a este cart_id
+            supabase.from(CART_ITEMS_TABLE).delete {
+                filter { eq("cart_id", cartId) }
+            }
+
+            return@withContext true
+        } catch (e: Exception) {
+            Log.e("ManagmentCart", "Error al limpiar ítems del carrito: ${e.message}")
+            return@withContext false
         }
     }
 }

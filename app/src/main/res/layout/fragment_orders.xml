@@ -47,7 +47,7 @@
                 android:visibility="gone"
                 tools:visibility="visible"
                 tools:itemCount="3"
-                tools:listitem="@layout/item_order" />
+                tools:listitem="@layout/viewholder_order" />
 
             <!-- Estado vacío -->
             <com.google.android.material.card.MaterialCardView

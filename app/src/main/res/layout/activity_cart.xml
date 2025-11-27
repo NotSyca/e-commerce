@@ -11,7 +11,7 @@
         android:id="@+id/EmptyTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Your Cart is Empty"
+        android:text="tu carrito esta vacio"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +32,7 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="My Cart"
+            android:text="Mi Carrito"
             android:textColor="@color/black"
             android:textSize="25sp"
             android:textStyle="bold"
@@ -52,6 +52,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
         android:layout_width="match_parent"
@@ -62,10 +63,10 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button"
+            android:id="@+id/pagarBtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Check Out"
+            android:text="Ir a Pagar"
             android:textColor="@color/black"
             android:textSize="20sp"
 
@@ -90,7 +91,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Subtotal:"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -99,8 +100,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Fee Delivery:"
-                android:textColor="@color/white"
+                android:text="Costo de Envio:"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textView13" />
 
@@ -110,7 +111,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="Total Iva:"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textView14" />
 
@@ -119,7 +120,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="$0"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent" />
@@ -130,7 +131,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="$0"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -142,7 +143,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="$0"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -164,7 +165,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="Total:"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/view" />
 
@@ -174,7 +175,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="$0"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -203,4 +204,32 @@
                 android:layout_height="match_parent" />
         </LinearLayout>
     </ScrollView>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilShippingAddress"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="24dp"
+        android:hint="Dirección de Envío Completa"
+        app:boxCornerRadiusBottomEnd="8dp"
+        app:boxCornerRadiusBottomStart="8dp"
+        app:boxCornerRadiusTopEnd="8dp"
+        app:boxCornerRadiusTopStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@id/scrolView"
+
+        tools:ignore="MissingConstraints">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etShippingAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPostalAddress"
+            android:maxLines="3"
+            android:minHeight="48dp"
+            android:gravity="top" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

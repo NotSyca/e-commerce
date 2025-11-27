@@ -1,0 +1,60 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingVertical="8dp">
+
+    <ImageView
+        android:id="@+id/imgItem"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:scaleType="centerCrop"
+        android:background="@drawable/grey_bg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/placeholder_image" />
+
+    <TextView
+        android:id="@+id/tvItemName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/tvItemPrice"
+        app:layout_constraintStart_toEndOf="@+id/imgItem"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Zapatos Deportivos Air Pro" />
+
+    <TextView
+        android:id="@+id/tvItemSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/imgItem"
+        app:layout_constraintTop_toBottomOf="@+id/tvItemName"
+        tools:text="Talla: M | Color: Negro" />
+
+    <TextView
+        android:id="@+id/tvItemQuantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/imgItem"
+        app:layout_constraintTop_toBottomOf="@+id/tvItemSize"
+        tools:text="Cantidad: 2" />
+
+    <TextView
+        android:id="@+id/tvItemPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="$50.00" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

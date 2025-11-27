@@ -11,8 +11,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.e_commerce.Api.TokenManager
-import com.example.e_commerce.Model.ProfileViewModel
-import com.example.e_commerce.Model.ProfileViewModelFactory
 import com.example.e_commerce.Model.SettingsViewModel
 import com.example.e_commerce.Model.User
 import com.example.e_commerce.R
@@ -21,6 +19,7 @@ import com.example.e_commerce.UI.BaseActivity
 import com.example.e_commerce.UI.EditCategoryFragment
 import com.example.e_commerce.UI.EditProfileActivity
 import com.example.e_commerce.UI.MainActivity
+import com.example.e_commerce.UI.Fragments.ManageOrdersFragment
 import com.example.e_commerce.databinding.FragmentSettingsBinding
 import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.gotrue.auth
@@ -136,6 +135,10 @@ class SettingsFragment : Fragment() {
         binding.btnEditProfile.setOnClickListener {
             val intent = Intent(requireContext(), EditProfileActivity::class.java)
             startActivity(intent)
+        }
+
+        binding.optionManageOrders.setOnClickListener{
+            navigateToFragment(ManageOrdersFragment())
         }
 
         binding.btnLogout.setOnClickListener {

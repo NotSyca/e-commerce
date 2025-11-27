@@ -23,13 +23,10 @@ import com.example.e_commerce.Helper.ManagmentCart
 import com.example.e_commerce.UI.Adapter.SizeSelectedListener
 import com.example.e_commerce.UI.CartActivity
 import com.example.e_commerce.UI.DetailActivity
-import com.example.e_commerce.UI.EditProductFragment
 import com.example.e_commerce.databinding.FragmentDetailBinding
 import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.postgrest.from
 import kotlinx.coroutines.launch
-import kotlinx.serialization.json.JsonElement
-import kotlinx.serialization.json.jsonObject
 
 class DetailProductFragment : Fragment(), SizeSelectedListener {
 
@@ -138,12 +135,6 @@ class DetailProductFragment : Fragment(), SizeSelectedListener {
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }
 
-        val colorList = item.picUrl ?: emptyList()
-
-        binding.colorlist.apply {
-            adapter = ColorAdapter(colorList)
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        }
     }
 
     private fun banners() {
