@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
-import com.example.e_commerce.Api.TokenManager
 import com.example.e_commerce.Model.BrandModel
 import com.example.e_commerce.Model.MainViewModel
 import com.example.e_commerce.Model.Product
@@ -58,35 +57,23 @@ class ExplorerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // El ViewModel se obtiene de la Activity (recomendado para compartir datos)
-        // O lo puedes inicializar aquí si quieres que el Fragment lo posea:
         viewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
 
-        // Inicializar ProfileViewModel para obtener datos del usuario
         val baseActivity = requireActivity() as BaseActivity
         val factory = ProfileViewModelFactory(baseActivity.supabase, baseActivity.tokenManager)
         profileViewModel = ViewModelProvider(this, factory).get(ProfileViewModel::class.java)
 
         handler = Handler(Looper.getMainLooper())
 
-        // Cargar nombre del usuario
         loadUserName()
-
-        // Inicializar la carga de datos
         initBanner()
         initBrand()
         initPopular()
 
         binding.NavBtnCart.setOnClickListener {
-            // CORRECCIÓN CLAVE: Crear el Intent con la clase de destino y usar startActivity(Intent)
-            val intent = Intent(this@ExplorerFragment.requireContext(), CartActivity::class.java).apply {
-
-                // Iniciar la actividad
-                startActivity(this)
-            }
+            val intent = Intent(requireContext(), CartActivity::class.java)
+            startActivity(intent)
         }
-        // Nota: Los listeners de la barra inferior (navBtnCart, navBtnProfile)
-        // deben estar en la HomeActivity contenedora.
     }
 
     private fun loadUserName() {
@@ -104,13 +91,8 @@ class ExplorerFragment : Fragment() {
         }
     }
 
-    // -------------------------------------------------------------------
-    // LÓGICA DE CARGA Y SCROLL (Migrada del Activity)
-    // -------------------------------------------------------------------
-
     private fun initBanner() {
         binding.progressBar.visibility = View.VISIBLE
-        // Usar viewLifecycleOwner para observar
         viewModel.banners.observe(viewLifecycleOwner) { items ->
             banners(items)
             binding.progressBar.visibility = View.GONE
@@ -131,21 +113,6 @@ class ExplorerFragment : Fragment() {
                 LinearLayoutManager.HORIZONTAL,
                 false
             )
-            binding.viewBrand.adapter = BrandAdapter(items, { brandId ->
-                manageProductFilter(brandId)
-            }) { brandId ->
-                manageProductFilter(brandId)
-            }
-            binding.progressBarBrand.visibility = View.GONE
-        }
-
-        viewModel.brands.observe(viewLifecycleOwner) { items ->
-            binding.viewBrand.layoutManager = LinearLayoutManager(
-                this@ExplorerFragment.requireContext(),
-                LinearLayoutManager.HORIZONTAL,
-                false)
-
-            // CONEXIÓN CLAVE: El callback recibe el ID de la marca (brandId)
             binding.viewBrand.adapter = BrandAdapter(items as MutableList<BrandModel>, { brandId ->
                 manageProductFilter(brandId)
             }) { brandId ->
@@ -157,25 +124,17 @@ class ExplorerFragment : Fragment() {
     }
 
     private fun manageProductFilter(brandId: Int) {
-
-        // Mostramos el indicador de carga
         binding.progressBarPopular.visibility = View.VISIBLE
 
         if (brandId != -1) {
-            // CASO 1: FILTRAR POR MARCA (El usuario seleccionó una marca)
             Log.d(TAG, "Aplicando filtro por Brand ID: $brandId")
-            viewModel.loadProductsByBrandId(brandId) // Carga productos filtrados
+            viewModel.loadProductsByBrandId(brandId)
         } else {
-            // CASO 2: RESTABLECER LA LISTA (El usuario deseleccionó la marca)
             Log.d("ExplorerFragment", "Restableciendo la lista de productos completa.")
-            viewModel.loadPopular() // Llama a la función que trae todos los productos populares
+            viewModel.loadPopular()
         }
-
-        // Nota: El progressBar se ocultará automáticamente en el observador
-        // de viewModel.populars cuando los nuevos datos (filtrados o completos) lleguen.
     }
 
-    // Función de centrado de marca (necesita el contexto del Fragment)
     fun centerBrandItem(position: Int) {
         val recyclerView = binding.viewBrand
         val layoutManager = recyclerView.layoutManager as? LinearLayoutManager
@@ -201,37 +160,31 @@ class ExplorerFragment : Fragment() {
 
             if (adapter == null) {
                 binding.viewPopular.layoutManager = GridLayoutManager(requireContext(), 2)
-                binding.viewPopular.adapter = PopularAdapter(data as ArrayList<Product>)
-
+                binding.viewPopular.adapter = PopularAdapter(ArrayList(data))
             } else {
                 (adapter as? PopularAdapter)?.updateData(data)
             }
             binding.viewPopular.visibility = if (data.isEmpty()) View.GONE else View.VISIBLE
         }
-
-        // 5. Iniciar la carga de datos al final de la configuración
         viewModel.loadPopular()
     }
 
-    private fun banners(images: List<SliderModel>){
+    private fun banners(images: List<SliderModel>) {
         if (images.isEmpty()) { return }
         binding.viewPagerSlider.adapter = SliderAdapter(images, binding.viewPagerSlider)
         binding.viewPagerSlider.clipToPadding = false
         binding.viewPagerSlider.clipChildren = false
         binding.viewPagerSlider.offscreenPageLimit = 3
 
-        // Uso de requireView() para acceder al ViewPager2 si getChildAt(0) falla
-        val recyclerView = binding.viewPagerSlider.getChildAt(0)
-        if (recyclerView is RecyclerView) {
-            recyclerView.overScrollMode = RecyclerView.OVER_SCROLL_NEVER
-        }
+        (binding.viewPagerSlider.getChildAt(0) as? RecyclerView)?.overScrollMode =
+            RecyclerView.OVER_SCROLL_NEVER
 
         val compositePageTransformer = CompositePageTransformer().apply {
             addTransformer(MarginPageTransformer(40))
         }
         binding.viewPagerSlider.setPageTransformer(compositePageTransformer)
 
-        if (images.size > 1){
+        if (images.size > 1) {
             setupAutoScroll(images.size)
             binding.dotIndicator.visibility = View.VISIBLE
             binding.dotIndicator.attachTo(binding.viewPagerSlider)
@@ -240,48 +193,40 @@ class ExplorerFragment : Fragment() {
         }
     }
 
-    // ... (setupAutoScroll se mantiene, usando binding y handler) ...
     private fun setupAutoScroll(listSize: Int) {
         autoScrollRunnable = object : Runnable {
             override fun run() {
-                val currentItem = binding.viewPagerSlider.currentItem
-
-                if (currentItem == listSize - 1) {
-                    binding.viewPagerSlider.setCurrentItem(0, true)
-                } else {
-                    // Avanza normal
-                    binding.viewPagerSlider.setCurrentItem(currentItem + 1, true)
+                // Solo ejecutar si el binding no es nulo
+                _binding?.let {
+                    val currentItem = it.viewPagerSlider.currentItem
+                    val nextItem = if (currentItem == listSize - 1) 0 else currentItem + 1
+                    it.viewPagerSlider.setCurrentItem(nextItem, true)
+                    handler.postDelayed(this, SCROLL_DELAY)
                 }
-
-                handler.postDelayed(this, SCROLL_DELAY)
             }
         }
-
         handler.postDelayed(autoScrollRunnable, SCROLL_DELAY)
     }
 
-    // -------------------------------------------------------------------
-    // CICLO DE VIDA DEL FRAGMENT (Manejo de Fugas de Memoria del Handler)
-    // -------------------------------------------------------------------
-
     override fun onResume() {
         super.onResume()
-        // Reiniciar el auto-scroll
-        if ((binding.viewPagerSlider.adapter?.itemCount ?: 0) > 0) {
+        if (::autoScrollRunnable.isInitialized) {
             handler.postDelayed(autoScrollRunnable, SCROLL_DELAY)
         }
     }
 
     override fun onPause() {
         super.onPause()
-        // Detener el auto-scroll
-        handler.removeCallbacks(autoScrollRunnable)
+        if (::autoScrollRunnable.isInitialized) {
+            handler.removeCallbacks(autoScrollRunnable)
+        }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        // Limpiar el Handler y el Binding
-        handler.removeCallbacks(autoScrollRunnable)
+        if (::autoScrollRunnable.isInitialized) {
+            handler.removeCallbacks(autoScrollRunnable)
+        }
         _binding = null
     }
 }
