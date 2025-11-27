@@ -4,13 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.e_commerce.Model.BrandModel
 import com.example.e_commerce.Model.MainViewModel
+import com.example.e_commerce.R
 import com.example.e_commerce.UI.Adapter.BrandAdapter
 import com.example.e_commerce.databinding.FragmentCategoriesBinding
 
@@ -63,11 +63,21 @@ class CategoriesFragment : Fragment() {
     }
 
     private fun onCategoryClick(brandId: Int) {
-        Toast.makeText(
-            requireContext(),
-            "Categoría seleccionada: $brandId",
-            Toast.LENGTH_SHORT
-        ).show()
+        if (brandId == -1) {
+            // El usuario deseleccionó la categoría
+            return
+        }
+
+        // Obtener el nombre de la categoría del viewModel
+        val categoryName = viewModel.brands.value?.find { it.id == brandId }?.name ?: "Categoría"
+
+        // Navegar al fragment de productos de la categoría
+        val categoryProductsFragment = CategoryProductsFragment.newInstance(brandId, categoryName)
+
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, categoryProductsFragment)
+            .addToBackStack(null)
+            .commit()
     }
 
     private fun showLoading() {

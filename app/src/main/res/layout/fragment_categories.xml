@@ -36,13 +36,15 @@
     <!-- RecyclerView para categorías -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCategories"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/spacing_lg"
         android:clipToPadding="false"
-        android:paddingBottom="?attr/actionBarSize"
+        android:paddingBottom="100dp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSubtitle"
         tools:itemCount="10"
         tools:listitem="@layout/viewholder_brand" />
