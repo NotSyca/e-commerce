@@ -105,6 +105,15 @@ class AddUserFragment : Fragment() {
             try {
                 Log.d(TAG, "Iniciando creación de usuario: $email")
 
+                // Guardar la sesión completa del admin actual
+                val adminSession = supabase.auth.currentSessionOrNull()
+
+                if (adminSession == null) {
+                    throw Exception("No se pudo obtener la sesión del administrador")
+                }
+
+                Log.d(TAG, "Sesión del admin guardada")
+
                 // PASO 1: Crear usuario en Supabase Auth
                 supabase.auth.signUpWith(Email) {
                     this.email = email
@@ -114,14 +123,14 @@ class AddUserFragment : Fragment() {
                 Log.d(TAG, "Usuario creado en Auth, obteniendo sesión...")
 
                 // Obtener el usuario creado
-                val currentUser = supabase.auth.currentUserOrNull()
+                val newUser = supabase.auth.currentUserOrNull()
 
-                if (currentUser == null) {
+                if (newUser == null) {
                     Log.e(TAG, "Error: No hay sesión después del signup")
                     throw Exception("No se pudo crear la sesión del usuario")
                 }
 
-                val userId = currentUser.id
+                val userId = newUser.id
                 Log.d(TAG, "Usuario ID obtenido: $userId")
 
                 // PASO 2: Insertar perfil en la tabla public.profiles
@@ -142,9 +151,18 @@ class AddUserFragment : Fragment() {
 
                 Log.d(TAG, "Perfil creado exitosamente para user_id: $userId")
 
-                // PASO 3: Cerrar la sesión del usuario recién creado para no afectar la sesión del admin
+                // PASO 3: Cerrar la sesión del usuario recién creado
                 supabase.auth.signOut()
                 Log.d(TAG, "Sesión del nuevo usuario cerrada")
+
+                // PASO 4: Restaurar la sesión del admin
+                try {
+                    supabase.auth.importSession(session = adminSession)
+                    Log.d(TAG, "Sesión del admin restaurada exitosamente")
+                } catch (e: Exception) {
+                    Log.e(TAG, "Error al restaurar sesión del admin", e)
+                    // Si falla la restauración, el admin tendrá que volver a loguearse
+                }
 
                 Toast.makeText(requireContext(), "Usuario creado exitosamente", Toast.LENGTH_SHORT).show()
 
