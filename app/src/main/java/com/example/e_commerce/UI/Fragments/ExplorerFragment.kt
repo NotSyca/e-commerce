@@ -16,15 +16,19 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
+import com.example.e_commerce.Api.TokenManager
 import com.example.e_commerce.Model.BrandModel
 import com.example.e_commerce.Model.MainViewModel
 import com.example.e_commerce.Model.Product
+import com.example.e_commerce.Model.ProfileViewModel
+import com.example.e_commerce.Model.ProfileViewModelFactory
 import com.example.e_commerce.Model.SliderModel
 import com.example.e_commerce.UI.Adapter.BrandAdapter
 import com.example.e_commerce.UI.Adapter.PopularAdapter
 import com.example.e_commerce.UI.Adapter.SliderAdapter
+import com.example.e_commerce.UI.BaseActivity
 import com.example.e_commerce.UI.CartActivity
-import com.example.e_commerce.databinding.FragmentExplorerBinding// El layout de tu HomeActivity
+import com.example.e_commerce.databinding.FragmentExplorerBinding
 
 /**
  * ExplorerFragment: Contiene los Banners, Marcas y Productos Populares.
@@ -38,6 +42,7 @@ class ExplorerFragment : Fragment() {
 
     // El ViewModel se comparte con la Activity contenedora o se inicializa con la Factory
     private lateinit var viewModel: MainViewModel // Será inicializado en onViewCreated
+    private lateinit var profileViewModel: ProfileViewModel
 
     private lateinit var handler: Handler
     private lateinit var autoScrollRunnable: Runnable
@@ -57,7 +62,15 @@ class ExplorerFragment : Fragment() {
         // O lo puedes inicializar aquí si quieres que el Fragment lo posea:
         viewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
 
+        // Inicializar ProfileViewModel para obtener datos del usuario
+        val baseActivity = requireActivity() as BaseActivity
+        val factory = ProfileViewModelFactory(baseActivity.supabase, baseActivity.tokenManager)
+        profileViewModel = ViewModelProvider(this, factory).get(ProfileViewModel::class.java)
+
         handler = Handler(Looper.getMainLooper())
+
+        // Cargar nombre del usuario
+        loadUserName()
 
         // Inicializar la carga de datos
         initBanner()
@@ -74,6 +87,21 @@ class ExplorerFragment : Fragment() {
         }
         // Nota: Los listeners de la barra inferior (navBtnCart, navBtnProfile)
         // deben estar en la HomeActivity contenedora.
+    }
+
+    private fun loadUserName() {
+        try {
+            profileViewModel.userProfile.observe(viewLifecycleOwner) { user ->
+                user?.let {
+                    val firstName = it.firstName ?: "Usuario"
+                    binding.tvUserName.text = firstName
+                }
+            }
+            profileViewModel.loadUserProfile()
+        } catch (e: Exception) {
+            Log.e("ExplorerFragment", "Error loading user name: ${e.message}", e)
+            binding.tvUserName.text = "Usuario"
+        }
     }
 
     // -------------------------------------------------------------------

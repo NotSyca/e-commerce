@@ -12,37 +12,42 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="@dimen/padding_lg">
 
         <!-- Header con título -->
 
-        <!-- Card del perfil de usuario -->
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <!-- Header del perfil -->
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/background_header_gradient"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="6dp"
-            app:strokeColor="#40FFFFFF"
+            android:text="Mi Perfil"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_display"
+            android:fontFamily="sans-serif-medium"
+            android:textStyle="bold"
+            android:layout_marginBottom="@dimen/spacing_xl" />
+
+        <!-- Card del perfil de usuario -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_lg"
+            app:cardCornerRadius="@dimen/card_corner_radius"
+            app:cardElevation="@dimen/elevation_sm"
+            app:cardBackgroundColor="@color/white"
+            app:strokeColor="@color/gray_300"
             app:strokeWidth="1dp">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:paddingVertical="4dp"
-                android:text="Mi Perfil"
-                android:textColor="@color/white"
-                android:textSize="34sp"
-                android:textStyle="bold" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="30dp">
+                android:padding="@dimen/padding_xl">
 
                 <!-- Avatar y nombre -->
                 <LinearLayout
@@ -55,11 +60,11 @@
 
                     <!-- Avatar circular -->
                     <com.google.android.material.card.MaterialCardView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        app:cardBackgroundColor="#4CAF50"
-                        app:cardCornerRadius="40dp"
-                        app:cardElevation="4dp">
+                        android:layout_width="@dimen/avatar_size_lg"
+                        android:layout_height="@dimen/avatar_size_lg"
+                        app:cardBackgroundColor="@color/gray_200"
+                        app:cardCornerRadius="@dimen/corner_radius_full"
+                        app:cardElevation="0dp">
 
                         <TextView
                             android:id="@+id/tvAvatarInitial"
@@ -67,8 +72,9 @@
                             android:layout_height="match_parent"
                             android:gravity="center"
                             android:text="U"
-                            android:textColor="@color/white"
-                            android:textSize="36sp"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_headline"
+                            android:fontFamily="sans-serif-medium"
                             android:textStyle="bold" />
 
                     </com.google.android.material.card.MaterialCardView>
@@ -88,24 +94,19 @@
                             android:ellipsize="end"
                             android:maxLines="2"
                             android:text="Nombre Usuario"
-                            android:textColor="@color/white"
-                            android:textSize="22sp"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_xl"
+                            android:fontFamily="sans-serif-medium"
                             android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/tvRole"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:background="#304CAF50"
-                            android:paddingStart="12dp"
-                            android:paddingTop="4dp"
-                            android:paddingEnd="12dp"
-                            android:paddingBottom="4dp"
+                            android:layout_marginTop="@dimen/spacing_xs"
                             android:text="Rol: Usuario"
-                            android:textColor="#4CAF50"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
+                            android:textColor="@color/gray_600"
+                            android:textSize="@dimen/text_size_sm" />
 
                     </LinearLayout>
 
@@ -113,46 +114,43 @@
 
                 <!-- Divisor -->
                 <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="14dp"
-                    android:background="@drawable/back" />
+                    style="@style/Divider"
+                    android:layout_marginVertical="@dimen/spacing_lg"
+                    android:background="@color/gray_200" />
 
                 <!-- Información de contacto -->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"
+                    android:layout_marginBottom="@dimen/spacing_md"
                     android:text="Información de Contacto"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_lg"
+                    android:fontFamily="sans-serif-medium"
                     android:textStyle="bold" />
 
                 <!-- Email -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:background="#20FFFFFF"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="12dp">
+                    android:layout_marginBottom="@dimen/spacing_md"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="12dp"
-                        android:text="📧"
-                        android:textSize="20sp" />
+                        android:text="Email"
+                        android:textColor="@color/gray_600"
+                        android:textSize="@dimen/text_size_sm"
+                        android:layout_marginBottom="@dimen/spacing_xs" />
 
                     <TextView
                         android:id="@+id/tvEmail"
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:text="email@ejemplo.com"
-                        android:textColor="@color/white"
-                        android:textSize="15sp" />
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_md" />
 
                 </LinearLayout>
 
@@ -160,27 +158,24 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:background="#20FFFFFF"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="12dp">
+                    android:layout_marginBottom="@dimen/spacing_md"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="12dp"
-                        android:text="📱"
-                        android:textSize="20sp" />
+                        android:text="Teléfono"
+                        android:textColor="@color/gray_600"
+                        android:textSize="@dimen/text_size_sm"
+                        android:layout_marginBottom="@dimen/spacing_xs" />
 
                     <TextView
                         android:id="@+id/tvPhone"
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Teléfono: No registrado"
-                        android:textColor="@color/white"
-                        android:textSize="15sp" />
+                        android:text="No registrado"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_md" />
 
                 </LinearLayout>
 
@@ -188,28 +183,25 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#20FFFFFF"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="12dp">
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="12dp"
-                        android:text="📍"
-                        android:textSize="20sp" />
+                        android:text="Dirección"
+                        android:textColor="@color/gray_600"
+                        android:textSize="@dimen/text_size_sm"
+                        android:layout_marginBottom="@dimen/spacing_xs" />
 
                     <TextView
                         android:id="@+id/tvAddress"
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:ellipsize="end"
                         android:maxLines="2"
-                        android:text="Dirección: No registrada"
-                        android:textColor="@color/white"
-                        android:textSize="15sp" />
+                        android:text="No registrada"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_md" />
 
                 </LinearLayout>
 
@@ -217,38 +209,35 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <!-- Botón de cerrar sesión con diseño mejorado -->
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Botón de editar perfil -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnEditProfile"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="40dp"
-            android:background="@drawable/grey_bg_selected"
-            android:paddingVertical="16dp"
+            android:layout_height="@dimen/button_height"
+            android:layout_marginBottom="@dimen/spacing_md"
+            android:backgroundTint="@color/black"
             android:text="Editar Perfil"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:cornerRadius="12dp"
-            app:icon="@android:drawable/ic_menu_edit"
-            app:iconGravity="start"
-            app:iconPadding="8dp" />
+            android:textSize="@dimen/text_size_md"
+            android:textColor="@color/white"
+            app:cornerRadius="@dimen/corner_radius_sm" />
 
+        <!-- Botón de cerrar sesión -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnLogout"
+            style="@style/Widget.App.Button.Outlined"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/button_height"
             android:layout_gravity="bottom"
-            android:layout_marginBottom="24dp"
-            android:backgroundTint="#FF5252"
-            android:paddingVertical="16dp"
+            android:layout_marginBottom="@dimen/spacing_xl"
+            android:backgroundTint="@android:color/transparent"
             android:text="Cerrar Sesión"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:cornerRadius="12dp"
-            app:icon="@android:drawable/ic_lock_power_off"
-            app:iconGravity="start"
-            app:iconPadding="8dp" />
+            android:textSize="@dimen/text_size_md"
+            android:textColor="@color/md_theme_error"
+            app:cornerRadius="@dimen/corner_radius_sm"
+            app:strokeColor="@color/md_theme_error"
+            app:strokeWidth="1dp" />
 
     </LinearLayout>
 

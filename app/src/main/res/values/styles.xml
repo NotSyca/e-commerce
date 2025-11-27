@@ -1,16 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-        <style name="SettingsOptionStyle">
+    <!-- Text Styles -->
+    <style name="TextAppearance.App.Headline" parent="TextAppearance.Material3.HeadlineLarge">
+        <item name="android:textSize">@dimen/text_size_display</item>
+        <item name="android:textColor">@color/md_theme_on_surface</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="TextAppearance.App.Title" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textSize">@dimen/text_size_title</item>
+        <item name="android:textColor">@color/md_theme_on_surface</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="TextAppearance.App.Subtitle" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:textSize">@dimen/text_size_lg</item>
+        <item name="android:textColor">@color/md_theme_on_surface_variant</item>
+    </style>
+
+    <style name="TextAppearance.App.Body" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:textSize">@dimen/text_size_md</item>
+        <item name="android:textColor">@color/md_theme_on_surface</item>
+    </style>
+
+    <style name="TextAppearance.App.Caption" parent="TextAppearance.Material3.BodySmall">
+        <item name="android:textSize">@dimen/text_size_sm</item>
+        <item name="android:textColor">@color/md_theme_on_surface_variant</item>
+    </style>
+
+    <style name="TextAppearance.App.Price" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textSize">@dimen/text_size_xl</item>
+        <item name="android:textColor">@color/price_green</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <!-- Button Styles -->
+    <style name="Widget.App.Button" parent="Widget.Material3.Button">
+        <item name="cornerRadius">@dimen/button_corner_radius</item>
+        <item name="android:minHeight">@dimen/button_height</item>
+        <item name="android:paddingStart">@dimen/button_padding_horizontal</item>
+        <item name="android:paddingEnd">@dimen/button_padding_horizontal</item>
+        <item name="android:textSize">@dimen/text_size_lg</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:letterSpacing">0.01</item>
+    </style>
+
+    <style name="Widget.App.Button.Outlined" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="cornerRadius">@dimen/button_corner_radius</item>
+        <item name="android:minHeight">@dimen/button_height</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/md_theme_outline</item>
+    </style>
+
+    <style name="Widget.App.Button.Text" parent="Widget.Material3.Button.TextButton">
+        <item name="android:minHeight">@dimen/button_height</item>
+        <item name="android:textSize">@dimen/text_size_lg</item>
+    </style>
+
+    <!-- Card Styles -->
+    <style name="Widget.App.CardView" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
+        <item name="cardElevation">@dimen/card_elevation</item>
+        <item name="contentPadding">@dimen/card_padding</item>
+        <item name="cardBackgroundColor">@color/background_card</item>
+    </style>
+
+    <style name="Widget.App.CardView.Outlined" parent="Widget.Material3.CardView.Outlined">
+        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/md_theme_outline_variant</item>
+        <item name="cardBackgroundColor">@color/background_card</item>
+    </style>
+
+    <!-- TextInputLayout Styles -->
+    <style name="Widget.App.TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusTopStart">@dimen/corner_radius_sm</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/corner_radius_sm</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/corner_radius_sm</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/corner_radius_sm</item>
+        <item name="boxStrokeColor">@color/md_theme_outline</item>
+        <item name="hintTextColor">@color/md_theme_on_surface_variant</item>
+    </style>
+
+    <!-- Settings Option Style -->
+    <style name="SettingsOptionStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:gravity">center_vertical</item>
-        <item name="android:minHeight">50dp</item>
+        <item name="android:minHeight">@dimen/list_item_height</item>
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
-        <item name="android:paddingStart">16dp</item>
-        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingStart">@dimen/padding_lg</item>
+        <item name="android:paddingEnd">@dimen/padding_lg</item>
+        <item name="android:paddingTop">@dimen/padding_md</item>
+        <item name="android:paddingBottom">@dimen/padding_md</item>
         <item name="android:background">?attr/selectableItemBackground</item>
     </style>
 
+    <!-- Divider Style -->
+    <style name="Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/divider_height</item>
+        <item name="android:background">@color/md_theme_outline_variant</item>
+    </style>
+
+    <!-- Product Card Style -->
+    <style name="Widget.App.ProductCard" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardCornerRadius">@dimen/corner_radius_md</item>
+        <item name="cardElevation">@dimen/elevation_sm</item>
+        <item name="cardBackgroundColor">@color/background_card</item>
+    </style>
+
+    <!-- Chip Style -->
+    <style name="Widget.App.Chip" parent="Widget.Material3.Chip.Filter">
+        <item name="chipCornerRadius">@dimen/corner_radius_full</item>
+        <item name="chipBackgroundColor">@color/md_theme_surface_variant</item>
+        <item name="android:textColor">@color/md_theme_on_surface_variant</item>
+    </style>
+
+    <!-- Bottom Navigation Style -->
+    <style name="Widget.App.BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
+        <item name="itemIconTint">@color/md_theme_on_surface_variant</item>
+        <item name="itemTextColor">@color/md_theme_on_surface_variant</item>
+        <item name="itemActiveIndicatorStyle">@style/Widget.App.ActiveIndicator</item>
+    </style>
+
+    <style name="Widget.App.ActiveIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/md_theme_primary_container</item>
+    </style>
 </resources>

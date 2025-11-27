@@ -32,8 +32,10 @@ class SettingsFragment : Fragment() {
 
         tokenManager = TokenManager(requireContext())
 
-        binding.ajustesAdmin.visibility =
-            if (tokenManager.isAdmin()) View.VISIBLE else View.GONE
+        // Mostrar/ocultar sección de administrador y su título
+        val isAdmin = tokenManager.isAdmin()
+        binding.ajustesAdmin.visibility = if (isAdmin) View.VISIBLE else View.GONE
+        binding.tvAdminSectionTitle.visibility = if (isAdmin) View.VISIBLE else View.GONE
 
         // Configurar Listeners para la navegación
         setupClickListeners()

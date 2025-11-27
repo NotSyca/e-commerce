@@ -28,29 +28,41 @@ class HomeActivity : BaseActivity(){
         // Asumo que el fragmento 'Explorer' debe ser la pantalla inicial
         if (savedInstanceState == null) {
             replaceFragment(ExplorerFragment())
+            setActiveNavItem(0) // Explorer es el item activo inicial
         }
 
         setupBottomNavigation()
     }
 
     private fun setupBottomNavigation() {
-        // Asumo que tu XML tiene un BottomNavigationView con ID 'bottom_nav_view'
-        // o que tu diseño personalizado ya tiene listeners en los Linear Layouts.
-
-
         binding.navBtnExplore.setOnClickListener {
             replaceFragment(ExplorerFragment())
+            setActiveNavItem(0)
         }
 
         binding.navBtnProfile.setOnClickListener {
             replaceFragment(ProfileFragment())
+            setActiveNavItem(1)
         }
 
         binding.navBtnSettings.setOnClickListener {
             replaceFragment(SettingsFragment())
-
+            setActiveNavItem(2)
         }
+    }
 
+    private fun setActiveNavItem(position: Int) {
+        // Resetear todos los items a estado inactivo
+        binding.navBtnExplore.setBackgroundResource(com.example.e_commerce.R.drawable.bg_nav_item_inactive)
+        binding.navBtnProfile.setBackgroundResource(com.example.e_commerce.R.drawable.bg_nav_item_inactive)
+        binding.navBtnSettings.setBackgroundResource(com.example.e_commerce.R.drawable.bg_nav_item_inactive)
+
+        // Activar el item seleccionado
+        when (position) {
+            0 -> binding.navBtnExplore.setBackgroundResource(com.example.e_commerce.R.drawable.bg_nav_item_active)
+            1 -> binding.navBtnProfile.setBackgroundResource(com.example.e_commerce.R.drawable.bg_nav_item_active)
+            2 -> binding.navBtnSettings.setBackgroundResource(com.example.e_commerce.R.drawable.bg_nav_item_active)
+        }
     }
 
     private fun replaceFragment(fragment: Fragment) {

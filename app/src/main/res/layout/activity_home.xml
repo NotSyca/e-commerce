@@ -32,76 +32,86 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_marginBottom="24dp"
             android:background="@drawable/background_bg"
+            android:paddingVertical="@dimen/padding_md"
             android:orientation="horizontal">
 
             <LinearLayout
                 android:id="@+id/navBtnExplore"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:paddingVertical="@dimen/padding_sm"
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="@dimen/icon_size_lg"
+                    android:layout_height="@dimen/icon_size_lg"
+                    android:layout_marginBottom="@dimen/spacing_xs"
                     app:srcCompat="@drawable/btn_1"
+                    app:tint="@color/black"
                     tools:ignore="ContentDescription" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Explorar"
-                    android:textColor="@color/white"
-                    android:textSize="10sp" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_xs" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/navBtnProfile"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:paddingVertical="@dimen/padding_sm"
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="@dimen/icon_size_lg"
+                    android:layout_height="@dimen/icon_size_lg"
+                    android:layout_marginBottom="@dimen/spacing_xs"
                     app:srcCompat="@drawable/btn_5"
+                    app:tint="@color/black"
                     tools:ignore="ContentDescription" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Perfil"
-                    android:textColor="@color/white"
-                    android:textSize="10sp" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_xs" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/navBtnSettings"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:paddingVertical="@dimen/padding_sm"
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="@dimen/icon_size_lg"
+                    android:layout_height="@dimen/icon_size_lg"
+                    android:layout_marginBottom="@dimen/spacing_xs"
                     app:srcCompat="@android:drawable/ic_menu_manage"
+                    app:tint="@color/black"
                     tools:ignore="ContentDescription" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Ajustes"
-                    android:textColor="@color/white"
-                    android:textSize="10sp" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_xs" />
             </LinearLayout>
 
         </LinearLayout>

@@ -1,27 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
+    <!-- Material Design 3 - Primary Colors (Minimalista) -->
+    <color name="md_theme_primary">#1A1A1A</color>
+    <color name="md_theme_primary_container">#F5F5F5</color>
+    <color name="md_theme_on_primary">#FFFFFF</color>
+    <color name="md_theme_on_primary_container">#1A1A1A</color>
+
+    <!-- Material Design 3 - Secondary Colors (Minimalista) -->
+    <color name="md_theme_secondary">#757575</color>
+    <color name="md_theme_secondary_container">#EEEEEE</color>
+    <color name="md_theme_on_secondary">#FFFFFF</color>
+    <color name="md_theme_on_secondary_container">#424242</color>
+
+    <!-- Material Design 3 - Tertiary Colors -->
+    <color name="md_theme_tertiary">#7D5260</color>
+    <color name="md_theme_tertiary_container">#FFD8E4</color>
+    <color name="md_theme_on_tertiary">#FFFFFF</color>
+    <color name="md_theme_on_tertiary_container">#31111D</color>
+
+    <!-- Material Design 3 - Error Colors -->
+    <color name="md_theme_error">#B3261E</color>
+    <color name="md_theme_error_container">#F9DEDC</color>
+    <color name="md_theme_on_error">#FFFFFF</color>
+    <color name="md_theme_on_error_container">#410E0B</color>
+
+    <!-- Material Design 3 - Background & Surface -->
+    <color name="md_theme_background">#FFFBFE</color>
+    <color name="md_theme_on_background">#1C1B1F</color>
+    <color name="md_theme_surface">#FFFBFE</color>
+    <color name="md_theme_surface_variant">#E7E0EC</color>
+    <color name="md_theme_on_surface">#1C1B1F</color>
+    <color name="md_theme_on_surface_variant">#49454F</color>
+
+    <!-- Material Design 3 - Outline -->
+    <color name="md_theme_outline">#79747E</color>
+    <color name="md_theme_outline_variant">#CAC4D0</color>
+
+    <!-- Basic Colors -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="gray">#888</color>
-    <color name="gray_700">#616161</color>
-    <color name="gray_500">#9E9E9E</color>
-    <color name="gray_300">#E0E0E0</color>
 
-    <color name="background_component">#1D1E33</color>
-    <color name="background_component_selected">#FF111328</color>
-    <color name="background_app">#0E0B20</color>
-    <color name="title_text">#FF8D8E98</color>
-    <color name="background_fab">#FF6200EE</color>
-    <color name="background_button1">#333333</color>
-    
-    <!-- Agregado para solucionar el crash en MainActivity -->
-    <color name="background_button">#FF6200EE</color>
-    
-    <color name="background_component2">#4A148C</color>
-    <color name="ripple_color">#CCCCCC</color>
+    <!-- Gray Scale -->
+    <color name="gray_50">#FAFAFA</color>
+    <color name="gray_100">#F5F5F5</color>
+    <color name="gray_200">#EEEEEE</color>
+    <color name="gray_300">#E0E0E0</color>
+    <color name="gray_400">#BDBDBD</color>
+    <color name="gray_500">#9E9E9E</color>
+    <color name="gray_600">#757575</color>
+    <color name="gray_700">#616161</color>
+    <color name="gray_800">#424242</color>
+    <color name="gray_900">#212121</color>
+    <color name="gray">#888888</color>
+
+    <!-- E-commerce Specific Colors -->
+    <color name="accent_orange">#FF6B35</color>
+    <color name="accent_green">#4CAF50</color>
+    <color name="accent_blue">#2196F3</color>
+    <color name="price_green">#00C853</color>
+    <color name="rating_yellow">#FFC107</color>
+
+    <!-- Background Colors -->
+    <color name="background_app">#FFFBFE</color>
+    <color name="background_component">#F5F5F5</color>
+    <color name="background_component_selected">#EADDFF</color>
+    <color name="background_card">#FFFFFF</color>
+
+    <!-- Button Colors -->
+    <color name="background_button">#1A1A1A</color>
+    <color name="background_button1">#1A1A1A</color>
+    <color name="background_fab">#1A1A1A</color>
+    <color name="accent_button">#2196F3</color>
+
+    <!-- Text Colors -->
+    <color name="title_text">#1C1B1F</color>
+    <color name="subtitle_text">#49454F</color>
+    <color name="caption_text">#79747E</color>
+
+    <!-- Ripple & Effects -->
+    <color name="ripple_color">#1F6750A4</color>
+    <color name="ripple_light">#1F000000</color>
+
+    <!-- Legacy Support (mantener compatibilidad) -->
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#6750A4</color>
+    <color name="purple_700">#3700B3</color>
+    <color name="teal_200">#03DAC5</color>
+    <color name="teal_700">#018786</color>
+    <color name="background_component2">#E8DEF8</color>
 </resources>

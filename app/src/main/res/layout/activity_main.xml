@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/login_background"
-    android:padding="24dp">
+    android:padding="@dimen/padding_xl">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/headerContainer"
@@ -35,89 +35,112 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Bienvenido/a"
-            android:textColor="@color/white"
-            android:textSize="32sp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_display"
+            android:fontFamily="sans-serif-medium"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="@dimen/spacing_sm"
             android:text="Inicia Sesion con tus credenciales"
-            android:textColor="@color/white"
-            android:textSize="16sp"/>
+            android:textColor="@color/gray_700"
+            android:textSize="@dimen/text_size_lg"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilEmail"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:hint="Email">
-
+        android:hint="Email"
+        app:hintTextColor="@color/gray_600"
+        app:boxStrokeColor="@color/gray_400"
+        app:boxStrokeWidth="1dp"
+        app:boxCornerRadiusTopStart="@dimen/corner_radius_sm"
+        app:boxCornerRadiusTopEnd="@dimen/corner_radius_sm"
+        app:boxCornerRadiusBottomStart="@dimen/corner_radius_sm"
+        app:boxCornerRadiusBottomEnd="@dimen/corner_radius_sm"
+        app:startIconDrawable="@android:drawable/ic_dialog_email"
+        app:startIconTint="@color/gray_600">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/background_component"
+            android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
-            android:textColor="@color/white"
-            android:paddingVertical="0dp"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="12dp"/>
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray_500"
+            android:minHeight="@dimen/min_touch_target"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilPassword"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/tilEmail"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="4dp"
-        android:textColorHint="@color/white"
-        android:hint="Password">
+        android:layout_marginTop="@dimen/spacing_lg"
+        android:hint="Password"
+        app:hintTextColor="@color/gray_600"
+        app:boxStrokeColor="@color/gray_400"
+        app:boxStrokeWidth="1dp"
+        app:boxCornerRadiusTopStart="@dimen/corner_radius_sm"
+        app:boxCornerRadiusTopEnd="@dimen/corner_radius_sm"
+        app:boxCornerRadiusBottomStart="@dimen/corner_radius_sm"
+        app:boxCornerRadiusBottomEnd="@dimen/corner_radius_sm"
+        app:startIconDrawable="@android:drawable/ic_lock_lock"
+        app:startIconTint="@color/gray_600"
+        app:endIconMode="password_toggle"
+        app:endIconTint="@color/gray_600">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/background_component"
-            android:textColor="@color/white"
+            android:layout_height="wrap_content"
             android:inputType="textPassword"
-            android:paddingVertical="0dp"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="12dp" />
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray_500"
+            android:minHeight="@dimen/min_touch_target" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnLogin"
+        style="@style/Widget.App.Button"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/button_height"
         android:text="Iniciar sesión"
         app:layout_constraintTop_toBottomOf="@id/tilPassword"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:cornerRadius="8dp"
-        android:backgroundTint="@color/background_button1"
-        android:layout_marginTop="24dp" />
+        app:cornerRadius="@dimen/corner_radius_sm"
+        android:backgroundTint="@color/black"
+        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/spacing_xxl" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnRegister"
+        style="@style/Widget.App.Button.Outlined"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/button_height"
         android:text="Registrarse"
         app:layout_constraintTop_toBottomOf="@id/btnLogin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:cornerRadius="8dp"
-        android:backgroundTint="@color/background_button1" />
+        app:cornerRadius="@dimen/corner_radius_sm"
+        android:backgroundTint="@android:color/transparent"
+        android:textColor="@color/black"
+        app:strokeColor="@color/gray_400"
+        app:strokeWidth="1dp"
+        android:layout_marginTop="@dimen/spacing_md" />
 
     <ProgressBar
         android:id="@+id/progress"

@@ -1,17 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Item de producto para el RecyclerView con diseño mejorado -->
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="225dp"
-    android:padding="8dp">
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/spacing_sm"
+    app:cardElevation="0dp"
+    app:cardCornerRadius="@dimen/corner_radius_sm"
+    app:cardBackgroundColor="@color/white"
+    app:strokeColor="@color/gray_300"
+    app:strokeWidth="1dp">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/padding_sm">
 
     <ImageView
         android:id="@+id/imgProduct"
-        android:layout_width="164dp"
-        android:layout_height="164dp"
+        android:layout_width="@dimen/product_image_large"
+        android:layout_height="@dimen/product_image_large"
         android:background="@drawable/grey_bg"
+        android:scaleType="centerCrop"
+        android:contentDescription="Product Image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -19,62 +31,73 @@
 
     <ImageView
         android:id="@+id/img"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="@dimen/icon_size_md"
+        android:layout_height="@dimen/icon_size_md"
+        android:layout_margin="@dimen/spacing_sm"
+        android:contentDescription="Favorite"
+        app:layout_constraintEnd_toEndOf="@id/imgProduct"
+        app:layout_constraintTop_toTopOf="@id/imgProduct"
         app:srcCompat="@drawable/fav_icon1"
-        app:tint="@color/gray" />
-
-    <TextView
-        android:id="@+id/priceTxt"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="$-"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/imageView7"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgProduct" />
-
-    <TextView
-        android:id="@+id/ratingTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:text="5"
-        android:textColor="@color/black"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@id/priceTxt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/priceTxt" />
-
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        app:layout_constraintBottom_toBottomOf="@+id/ratingTxt"
-        app:layout_constraintEnd_toEndOf="@id/ratingTxt"
-        app:layout_constraintTop_toTopOf="@id/ratingTxt"
-        app:srcCompat="@drawable/star" />
+        app:tint="@color/gray_600" />
 
     <TextView
         android:id="@+id/titleTxt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
-        android:singleLine="true"
-        android:text="title"
-        android:textColor="@color/black"
-        android:textSize="16sp"
+        android:layout_marginTop="@dimen/spacing_sm"
+        android:layout_marginEnd="@dimen/spacing_xs"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:text="Product Title"
+        android:textColor="@color/md_theme_on_surface"
+        android:textSize="@dimen/text_size_md"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/priceTxt" />
+        app:layout_constraintTop_toBottomOf="@+id/imgProduct" />
+
+    <TextView
+        android:id="@+id/priceTxt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_xs"
+        android:text="$-"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_lg"
+        android:fontFamily="sans-serif-medium"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/ratingContainer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleTxt" />
+
+    <LinearLayout
+        android:id="@+id/ratingContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        app:layout_constraintBottom_toBottomOf="@id/priceTxt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/priceTxt">
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="@dimen/icon_size_sm"
+            android:layout_height="@dimen/icon_size_sm"
+            android:layout_marginEnd="2dp"
+            android:contentDescription="Star"
+            app:srcCompat="@drawable/star"
+            app:tint="@color/gray_700" />
+
+        <TextView
+            android:id="@+id/ratingTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5.0"
+            android:textColor="@color/gray_700"
+            android:textSize="@dimen/text_size_sm" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

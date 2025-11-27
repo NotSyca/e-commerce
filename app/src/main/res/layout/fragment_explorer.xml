@@ -20,31 +20,36 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="32dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/padding_xl"
+                android:layout_marginTop="@dimen/spacing_xxl"
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/textView4"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Welcome Back"
-                        android:textColor="@color/gray" />
+                        android:text="Hola,"
+                        android:textColor="@color/gray_600"
+                        android:textSize="@dimen/text_size_md" />
 
                     <TextView
-                        android:id="@+id/textView5"
-                        android:layout_width="match_parent"
+                        android:id="@+id/tvUserName"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Lukas"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:text="Usuario"
+                        android:textSize="@dimen/text_size_title"
+                        android:textColor="@color/black"
+                        android:fontFamily="sans-serif-medium"
+                        android:textStyle="bold"
+                        android:maxLines="1"
+                        android:ellipsize="end" />
 
                 </LinearLayout>
 
@@ -121,8 +126,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="@dimen/padding_xl"
+                android:layout_marginTop="@dimen/spacing_lg"
                 android:orientation="horizontal">
 
                 <TextView
@@ -131,18 +136,18 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Offical Brand"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textColor="@color/md_theme_on_surface"
+                    android:textSize="@dimen/text_size_xl"
+                    android:fontFamily="sans-serif-medium"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/textView7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="See All"
-                    android:textColor="@color/background_component"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:text="Ver todos"
+                    android:textColor="@color/gray_600"
+                    android:textSize="@dimen/text_size_sm" />
             </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -175,8 +180,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="@dimen/padding_xl"
+                android:layout_marginTop="@dimen/spacing_lg"
                 android:orientation="horizontal">
 
                 <TextView
@@ -185,18 +190,18 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Recommendation"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textColor="@color/md_theme_on_surface"
+                    android:textSize="@dimen/text_size_xl"
+                    android:fontFamily="sans-serif-medium"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/textView9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="See All"
-                    android:textColor="@color/background_component"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:text="Ver todos"
+                    android:textColor="@color/gray_600"
+                    android:textSize="@dimen/text_size_sm" />
             </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout

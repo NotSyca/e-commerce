@@ -16,217 +16,218 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingBottom="80dp"
-            android:paddingHorizontal="16dp">
+            android:paddingHorizontal="@dimen/padding_lg">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/headerContainer"
+            <!-- Header minimalista -->
+            <TextView
+                android:id="@+id/tvAppName"
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="24dp"
-                android:background="@drawable/background_header_gradient"
-                app:layout_constraintTop_toTopOf="parent">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_xxl"
+                android:layout_marginBottom="@dimen/spacing_xl"
+                android:text="Ajustes"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_display"
+                android:fontFamily="sans-serif-medium"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/tvAppName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
-                    android:layout_marginEnd="16dp"
-                    android:text="Settings"
-                    android:textColor="@color/white"
-                    android:textSize="32sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/tvHeaderTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ajustes"
-                    android:textColor="#30FFFFFF"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@id/tvAppName"
-                    app:layout_constraintEnd_toEndOf="@id/tvAppName" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            <!-- Sección: Ajustes de tu espacio -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_md"
+                android:text="Ajustes de tu espacio"
+                android:textColor="@color/gray_600"
+                android:textSize="@dimen/text_size_sm"
+                android:textStyle="bold" />
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="2dp">
+                android:layout_marginBottom="@dimen/spacing_xl"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/white"
+                app:strokeColor="@color/gray_300"
+                app:strokeWidth="1dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingVertical="12dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:layout_marginStart="16dp"
-                        android:text="Ajustes de tu espacio"
-                        android:textColor="@color/gray"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
+                    android:orientation="vertical">
 
                     <LinearLayout
                         android:id="@+id/optionNotifications"
                         style="@style/SettingsOptionStyle"
-                        android:background="@drawable/background_header_gradient">
+                        android:background="?attr/selectableItemBackground">
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Notificaciones"
-                            android:textColor="@color/white"
-                            android:textStyle="bold" />
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_md" />
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="@dimen/icon_size_md"
+                            android:layout_height="@dimen/icon_size_md"
                             app:srcCompat="@android:drawable/ic_menu_more"
+                            app:tint="@color/gray_600"
                             tools:ignore="ContentDescription" />
                     </LinearLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- Sección: Seguridad y Privacidad -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_md"
+                android:text="Seguridad y Privacidad"
+                android:textColor="@color/gray_600"
+                android:textSize="@dimen/text_size_sm"
+                android:textStyle="bold" />
+
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:cardElevation="2dp">
+                android:layout_marginBottom="@dimen/spacing_xl"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/white"
+                app:strokeColor="@color/gray_300"
+                app:strokeWidth="1dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingVertical="12dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:layout_marginStart="16dp"
-                        android:text="Seguridad y Privacidad"
-                        android:textColor="@color/gray"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
+                    android:divider="@drawable/background_bg"
+                    android:showDividers="middle">
 
                     <LinearLayout
                         android:id="@+id/optionHistory"
                         style="@style/SettingsOptionStyle"
-                        android:background="@drawable/background_header_gradient"
-                        android:layout_marginBottom="8dp">
+                        android:background="?attr/selectableItemBackground">
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Historial de búsqueda"
-                            android:textColor="@color/white"
-                            android:textStyle="bold" />
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_md" />
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="@dimen/icon_size_md"
+                            android:layout_height="@dimen/icon_size_md"
                             app:srcCompat="@android:drawable/ic_menu_more"
+                            app:tint="@color/gray_600"
                             tools:ignore="ContentDescription" />
                     </LinearLayout>
+
+                    <View
+                        style="@style/Divider"
+                        android:layout_marginHorizontal="@dimen/padding_lg" />
 
                     <LinearLayout
                         android:id="@+id/optionPrivacy"
                         style="@style/SettingsOptionStyle"
-                        android:background="@drawable/background_header_gradient">
+                        android:background="?attr/selectableItemBackground">
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Privacidad"
-                            android:textColor="@color/white"
-                            android:textStyle="bold" />
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_md" />
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="@dimen/icon_size_md"
+                            android:layout_height="@dimen/icon_size_md"
                             app:srcCompat="@android:drawable/ic_menu_more"
+                            app:tint="@color/gray_600"
                             tools:ignore="ContentDescription" />
                     </LinearLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- Sección: Opciones de Administrador -->
+            <TextView
+                android:id="@+id/tvAdminSectionTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_md"
+                android:text="Opciones de Administrador"
+                android:textColor="@color/gray_600"
+                android:textSize="@dimen/text_size_sm"
+                android:textStyle="bold"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/ajustes_admin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="2dp"
+                android:layout_marginBottom="@dimen/spacing_xl"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/white"
+                app:strokeColor="@color/gray_300"
+                app:strokeWidth="1dp"
                 android:visibility="gone"
-                tools:visibility="visible" >
+                tools:visibility="visible">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingVertical="12dp">
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginBottom="8dp"
-                        android:text="Opciones de Producto"
-                        android:textColor="@color/gray"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
+                    android:orientation="vertical">
 
                     <LinearLayout
                         android:id="@+id/optionAddProduct"
                         style="@style/SettingsOptionStyle"
-                        android:layout_marginBottom="8dp"
-                        android:background="@drawable/background_header_gradient">
+                        android:background="?attr/selectableItemBackground">
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Agregar productos"
-                            android:textColor="@color/white"
-                            android:textStyle="bold" />
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_md" />
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="@dimen/icon_size_md"
+                            android:layout_height="@dimen/icon_size_md"
                             app:srcCompat="@android:drawable/ic_menu_add"
+                            app:tint="@color/black"
                             tools:ignore="ContentDescription" />
                     </LinearLayout>
+
+                    <View
+                        style="@style/Divider"
+                        android:layout_marginHorizontal="@dimen/padding_lg" />
 
                     <LinearLayout
                         android:id="@+id/optionAddCategoria"
                         style="@style/SettingsOptionStyle"
-                        android:background="@drawable/background_header_gradient">
+                        android:background="?attr/selectableItemBackground">
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Agregar Categorias"
-                            android:textColor="@color/white"
-                            android:textStyle="bold" />
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_md" />
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="@dimen/icon_size_md"
+                            android:layout_height="@dimen/icon_size_md"
                             app:srcCompat="@android:drawable/ic_menu_add"
+                            app:tint="@color/black"
                             tools:ignore="ContentDescription" />
                     </LinearLayout>
                 </LinearLayout>
