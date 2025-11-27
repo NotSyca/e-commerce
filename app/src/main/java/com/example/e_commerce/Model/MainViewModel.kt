@@ -39,7 +39,6 @@ class MainViewModel : ViewModel() {
     private val _popular = MutableLiveData<MutableList<Product>>()
     val populars: LiveData<MutableList<Product>> = _popular
 
-    // LiveData para la búsqueda
     private val _searchResults = MutableLiveData<List<Product>>()
     val searchResults: LiveData<List<Product>> = _searchResults
 
@@ -50,6 +49,19 @@ class MainViewModel : ViewModel() {
     private val PRODUCTS_STORAGE_BUCKET = "Products"
     private val CATEGORIES_TABLE_NAME = "categories"
     private val PRODUCTS_TABLE_NAME = "Product"
+    private val SEARCH_HISTORY_TABLE_NAME = "search_history"
+
+    fun addSearchToHistory(userId: String, query: String) {
+        viewModelScope.launch {
+            try {
+                val request = SearchHistoryRequest(user_id = userId, query = query)
+                supabase.from(SEARCH_HISTORY_TABLE_NAME).insert(request)
+                Log.i("MainViewModel", "Search history added for user $userId with query '$query'")
+            } catch (e: Exception) {
+                Log.e("MainViewModel", "Failed to add search history: ${e.message}", e)
+            }
+        }
+    }
 
     fun searchProducts(query: String) {
         viewModelScope.launch {

@@ -11,8 +11,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.e_commerce.Model.MainViewModel
 import com.example.e_commerce.Model.Product
+import com.example.e_commerce.Model.ProfileViewModel
+import com.example.e_commerce.Model.ProfileViewModelFactory
 import com.example.e_commerce.UI.Adapter.PopularAdapter
+import com.example.e_commerce.UI.BaseActivity
 import com.example.e_commerce.databinding.FragmentSearchBinding
+import io.github.jan.supabase.gotrue.auth
 
 class SearchFragment : Fragment() {
 
@@ -20,6 +24,7 @@ class SearchFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var viewModel: MainViewModel
+    private lateinit var profileViewModel: ProfileViewModel
     private lateinit var searchAdapter: PopularAdapter
 
     override fun onCreateView(
@@ -34,6 +39,12 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
+
+        // Inicializar ProfileViewModel para obtener el ID del usuario
+        val baseActivity = requireActivity() as BaseActivity
+        val factory = ProfileViewModelFactory(baseActivity.supabase, baseActivity.tokenManager)
+        profileViewModel = ViewModelProvider(this, factory).get(ProfileViewModel::class.java)
+        profileViewModel.loadUserProfile() // Cargar datos del usuario
 
         setupRecyclerView()
         setupSearch()
@@ -59,7 +70,14 @@ class SearchFragment : Fragment() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 val query = s.toString().trim()
                 if (query.length >= 2) { // Empezar a buscar con al menos 2 caracteres
+                    // 1. Ejecutar la búsqueda de productos
                     viewModel.searchProducts(query)
+
+                    // 2. Guardar la búsqueda en el historial
+                    val userId = (requireActivity() as BaseActivity).supabase.auth.currentUserOrNull()?.id
+                    if (userId != null) {
+                        viewModel.addSearchToHistory(userId, query)
+                    }
                 }
             }
 
