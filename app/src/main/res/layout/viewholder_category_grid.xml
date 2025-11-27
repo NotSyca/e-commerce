@@ -2,9 +2,9 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="88dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="4dp"
+    android:layout_margin="8dp"
     app:cardBackgroundColor="@android:color/transparent"
     app:cardCornerRadius="12dp"
     app:cardElevation="0dp"
@@ -17,26 +17,27 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
-        android:paddingHorizontal="12dp"
-        android:paddingVertical="16dp">
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="24dp">
 
         <ImageView
             android:id="@+id/pic"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:padding="2dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:padding="4dp"
             tools:src="@drawable/grey_bg" />
 
         <TextView
             android:id="@+id/title_pic"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:ellipsize="end"
-            android:maxLines="1"
+            android:gravity="center"
+            android:maxLines="2"
             android:textColor="@color/black"
-            android:textSize="12sp"
-            tools:text="Marca" />
+            android:textSize="13sp"
+            tools:text="Categoría" />
 
     </LinearLayout>
 

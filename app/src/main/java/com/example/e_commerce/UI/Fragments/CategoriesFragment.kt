@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.e_commerce.Model.BrandModel
 import com.example.e_commerce.Model.MainViewModel
 import com.example.e_commerce.R
-import com.example.e_commerce.UI.Adapter.BrandAdapter
+import com.example.e_commerce.UI.Adapter.CategoryGridAdapter
 import com.example.e_commerce.databinding.FragmentCategoriesBinding
 
 class CategoriesFragment : Fragment() {
@@ -49,11 +49,11 @@ class CategoriesFragment : Fragment() {
 
         viewModel.brands.observe(viewLifecycleOwner) { brands ->
             if (brands.isNotEmpty()) {
-                binding.rvCategories.adapter = BrandAdapter(
-                    brands as MutableList<BrandModel>,
-                    { brandId -> onCategoryClick(brandId) },
-                    { }
-                )
+                binding.rvCategories.adapter = CategoryGridAdapter(
+                    brands as MutableList<BrandModel>
+                ) { brandId ->
+                    onCategoryClick(brandId)
+                }
                 showCategories()
             } else {
                 showLoading()
