@@ -104,6 +104,10 @@ class SettingsFragment : Fragment() {
             navigateToFragment(EditCategoryFragment())
         }
 
+        binding.optionManageUsers.setOnClickListener {
+            navigateToFragment(UsersListFragment())
+        }
+
         binding.optionNotifications.setOnClickListener {
             Toast.makeText(requireContext(), "Abrir Notificaciones", Toast.LENGTH_SHORT).show()
         }

@@ -38,3 +38,19 @@ data class UserUpdateAuth(
     val password: String? = null
 )
 
+@Serializable
+data class UserProfileUpdate(
+    @SerialName("first_name")
+    val firstName: String,
+    @SerialName("last_name")
+    val lastName: String,
+    @SerialName("email")
+    val email: String,
+    @SerialName("phone")
+    val phone: String,
+    @SerialName("address")
+    val address: String,
+    @SerialName("is_admin")
+    val isAdmin: Boolean
+)
+

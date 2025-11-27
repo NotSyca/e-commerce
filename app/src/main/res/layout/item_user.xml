@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardUser"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/spacing_lg"
+    app:cardCornerRadius="@dimen/card_corner_radius"
+    app:cardElevation="0dp"
+    app:cardBackgroundColor="@color/white"
+    app:strokeColor="@color/gray_300"
+    app:strokeWidth="1dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_lg">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="@dimen/spacing_xs">
+
+                <TextView
+                    android:id="@+id/tvUserName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Usuario Ejemplo"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_lg"
+                    android:fontFamily="sans-serif-medium"
+                    android:textStyle="bold"
+                    tools:text="Juan Pérez" />
+
+                <TextView
+                    android:id="@+id/tvAdminBadge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Admin"
+                    android:textColor="@color/accent_green"
+                    android:textSize="@dimen/text_size_xs"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:background="@drawable/bg_chip_selected"
+                    android:layout_marginStart="8dp"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvUserEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="email@ejemplo.com"
+                android:textColor="@color/gray_600"
+                android:textSize="@dimen/text_size_sm"
+                android:layout_marginBottom="@dimen/spacing_xs"
+                tools:text="juan.perez@email.com" />
+
+            <TextView
+                android:id="@+id/tvUserPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+56 9 1234 5678"
+                android:textColor="@color/gray_600"
+                android:textSize="@dimen/text_size_sm"
+                tools:text="+56 9 1234 5678" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ivUserMenu"
+            android:layout_width="@dimen/icon_size_md"
+            android:layout_height="@dimen/icon_size_md"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/padding_md"
+            app:srcCompat="@android:drawable/ic_menu_more"
+            app:tint="@color/gray_600"
+            android:contentDescription="Opciones de usuario" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
