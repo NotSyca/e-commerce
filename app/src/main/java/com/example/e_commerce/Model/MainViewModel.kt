@@ -196,9 +196,12 @@ class MainViewModel : ViewModel() {
                 val popularProducts = supabase.from(PRODUCTS_TABLE_NAME)
                     .select() {
                         order("rating", Order.DESCENDING)
-                        limit(10)
                     }
                     .decodeList<Product>()
+                
+                // Línea de diagnóstico
+                Log.d("MainViewModel", "Productos populares cargados desde Supabase: ${popularProducts.size}")
+
                 _popular.postValue(popularProducts.toMutableList())
             } catch (e: Exception) {
                 Log.e("MainViewModel", "Error al cargar productos populares: ${e.message}", e)

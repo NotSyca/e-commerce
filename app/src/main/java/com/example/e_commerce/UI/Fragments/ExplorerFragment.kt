@@ -66,11 +66,10 @@ class ExplorerFragment : Fragment() {
         initBrand()
         initPopular()
 
-        // Listener para el botón de búsqueda
         binding.imageView2.setOnClickListener {
             parentFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, SearchFragment()) // Reemplaza el fragmento actual por el de búsqueda
-                .addToBackStack(null) // Permite volver atrás
+                .replace(R.id.fragment_container, SearchFragment())
+                .addToBackStack(null)
                 .commit()
         }
 
@@ -155,21 +154,24 @@ class ExplorerFragment : Fragment() {
     }
 
     private fun initPopular() {
+        // 1. Configurar la estructura del RecyclerView una sola vez.
+        binding.viewPopular.isNestedScrollingEnabled = false
+        binding.viewPopular.layoutManager = GridLayoutManager(requireContext(), 2)
+        binding.viewPopular.adapter = PopularAdapter(arrayListOf())
+
         binding.progressBarPopular.visibility = View.VISIBLE
+
+        // 2. Observar los cambios en los datos.
         viewModel.populars.observe(viewLifecycleOwner) { popularsList ->
-            val data = popularsList.toMutableList()
             binding.progressBarPopular.visibility = View.GONE
 
-            val adapter = binding.viewPopular.adapter
-
-            if (adapter == null) {
-                binding.viewPopular.layoutManager = GridLayoutManager(requireContext(), 2)
-                binding.viewPopular.adapter = PopularAdapter(ArrayList(data))
-            } else {
-                (adapter as? PopularAdapter)?.updateData(data)
-            }
-            binding.viewPopular.visibility = if (data.isEmpty()) View.GONE else View.VISIBLE
+            // 3. Actualizar los datos del adaptador.
+            (binding.viewPopular.adapter as? PopularAdapter)?.updateData(popularsList)
+            
+            binding.viewPopular.visibility = if (popularsList.isEmpty()) View.GONE else View.VISIBLE
         }
+
+        // 4. Cargar los datos iniciales.
         viewModel.loadPopular()
     }
 

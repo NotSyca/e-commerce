@@ -18,7 +18,7 @@
             android:paddingBottom="80dp"
             android:paddingHorizontal="@dimen/padding_lg">
 
-            <!-- Header minimalista -->
+            <!-- Header -->
             <TextView
                 android:id="@+id/tvAppName"
                 android:layout_width="match_parent"
@@ -52,30 +52,24 @@
                 app:strokeWidth="1dp">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:id="@+id/optionNotifications"
+                    style="@style/SettingsOptionStyle"
+                    android:background="?attr/selectableItemBackground">
 
-                    <LinearLayout
-                        android:id="@+id/optionNotifications"
-                        style="@style/SettingsOptionStyle"
-                        android:background="?attr/selectableItemBackground">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Notificaciones"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_md" />
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Notificaciones"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/text_size_md" />
-
-                        <ImageView
-                            android:layout_width="@dimen/icon_size_md"
-                            android:layout_height="@dimen/icon_size_md"
-                            app:srcCompat="@android:drawable/ic_menu_more"
-                            app:tint="@color/gray_600"
-                            tools:ignore="ContentDescription" />
-                    </LinearLayout>
+                    <ImageView
+                        android:layout_width="@dimen/icon_size_md"
+                        android:layout_height="@dimen/icon_size_md"
+                        app:srcCompat="@android:drawable/ic_menu_more"
+                        app:tint="@color/gray_600"
+                        tools:ignore="ContentDescription" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -106,8 +100,9 @@
                     android:divider="@drawable/background_bg"
                     android:showDividers="middle">
 
+                    <!-- Menú desplegable para el Historial -->
                     <LinearLayout
-                        android:id="@+id/optionHistory"
+                        android:id="@+id/historyHeader"
                         style="@style/SettingsOptionStyle"
                         android:background="?attr/selectableItemBackground">
 
@@ -115,21 +110,46 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Historial de búsqueda"
+                            android:text="Historial de Búsqueda"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_size_md" />
 
                         <ImageView
-                            android:layout_width="@dimen/icon_size_md"
-                            android:layout_height="@dimen/icon_size_md"
-                            app:srcCompat="@android:drawable/ic_menu_more"
-                            app:tint="@color/gray_600"
-                            tools:ignore="ContentDescription" />
+                            android:id="@+id/arrowIcon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@android:drawable/arrow_down_float"
+                            app:tint="@color/gray_700"/>
                     </LinearLayout>
 
-                    <View
-                        style="@style/Divider"
-                        android:layout_marginHorizontal="@dimen/padding_lg" />
+                    <LinearLayout
+                        android:id="@+id/historyContent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        tools:visibility="visible">
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="16dp"
+                            android:paddingBottom="16dp">
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rvSearchHistory"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                tools:itemCount="3"
+                                tools:listitem="@layout/item_search_history" />
+                            <ProgressBar
+                                android:id="@+id/progressBarHistory"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:visibility="gone" />
+                        </FrameLayout>
+                    </LinearLayout>
+
+                    <View style="@style/Divider" android:layout_marginHorizontal="@dimen/padding_lg" />
 
                     <LinearLayout
                         android:id="@+id/optionPrivacy"
@@ -189,7 +209,6 @@
                         android:id="@+id/optionAddProduct"
                         style="@style/SettingsOptionStyle"
                         android:background="?attr/selectableItemBackground">
-
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -197,7 +216,6 @@
                             android:text="Agregar productos"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_size_md" />
-
                         <ImageView
                             android:layout_width="@dimen/icon_size_md"
                             android:layout_height="@dimen/icon_size_md"
@@ -206,15 +224,12 @@
                             tools:ignore="ContentDescription" />
                     </LinearLayout>
 
-                    <View
-                        style="@style/Divider"
-                        android:layout_marginHorizontal="@dimen/padding_lg" />
+                    <View style="@style/Divider" android:layout_marginHorizontal="@dimen/padding_lg" />
 
                     <LinearLayout
                         android:id="@+id/optionAddCategoria"
                         style="@style/SettingsOptionStyle"
                         android:background="?attr/selectableItemBackground">
-
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -222,7 +237,6 @@
                             android:text="Agregar Categorias"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_size_md" />
-
                         <ImageView
                             android:layout_width="@dimen/icon_size_md"
                             android:layout_height="@dimen/icon_size_md"
@@ -231,15 +245,12 @@
                             tools:ignore="ContentDescription" />
                     </LinearLayout>
 
-                    <View
-                        style="@style/Divider"
-                        android:layout_marginHorizontal="@dimen/padding_lg" />
+                    <View style="@style/Divider" android:layout_marginHorizontal="@dimen/padding_lg" />
 
                     <LinearLayout
                         android:id="@+id/optionEditCategoria"
                         style="@style/SettingsOptionStyle"
                         android:background="?attr/selectableItemBackground">
-
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -247,7 +258,6 @@
                             android:text="Editar/Eliminar Categorias"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_size_md" />
-
                         <ImageView
                             android:layout_width="@dimen/icon_size_md"
                             android:layout_height="@dimen/icon_size_md"

@@ -211,10 +211,9 @@
                     android:textSize="@dimen/text_size_sm" />
             </LinearLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/viewPopular"
@@ -222,22 +221,17 @@
                     android:layout_height="wrap_content"
                     android:nestedScrollingEnabled="false"
                     android:paddingHorizontal="16dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
                     tools:itemCount="6"
-                    tools:listitem="@layout/viewholder_popular" />
+                    tools:listitem="@layout/viewholder_recommended" />
 
                 <ProgressBar
                     android:id="@+id/progressBarPopular"
                     style="?android:attr/progressBarStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    android:layout_gravity="center" />
+
+            </FrameLayout>
 
         </LinearLayout>
 
