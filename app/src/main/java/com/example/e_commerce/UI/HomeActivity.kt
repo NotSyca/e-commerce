@@ -7,8 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.e_commerce.Model.MainViewModel
 import com.example.e_commerce.databinding.ActivityHomeBinding
-import com.example.e_commerce.UI.Fragments.ExplorerFragment // Nuevo fragmento
-import com.example.e_commerce.UI.Fragments.ProfileFragment // Fragmento del perfil
+import com.example.e_commerce.UI.Fragments.ExplorerFragment
 import com.example.e_commerce.UI.Fragments.SettingsFragment
 import com.example.e_commerce.UI.Fragments.OrdersFragment
 import com.example.e_commerce.UI.Fragments.CategoriesFragment
@@ -42,31 +41,25 @@ class HomeActivity : BaseActivity(){
             setActiveNavItem(0)
         }
 
-        binding.navBtnProfile.setOnClickListener {
-            replaceFragment(ProfileFragment())
-            setActiveNavItem(1)
-        }
-
         binding.navBtnCategories.setOnClickListener {
             replaceFragment(CategoriesFragment())
-            setActiveNavItem(2)
+            setActiveNavItem(1)
         }
 
         binding.navBtnOrders.setOnClickListener {
             replaceFragment(OrdersFragment())
-            setActiveNavItem(3)
+            setActiveNavItem(2)
         }
 
         binding.navBtnSettings.setOnClickListener {
             replaceFragment(SettingsFragment())
-            setActiveNavItem(4)
+            setActiveNavItem(3)
         }
     }
 
     private fun setActiveNavItem(position: Int) {
         // Resetear todos los items a estado inactivo
         binding.navBtnExplore.setBackgroundResource(com.example.e_commerce.R.drawable.bg_nav_item_inactive)
-        binding.navBtnProfile.setBackgroundResource(com.example.e_commerce.R.drawable.bg_nav_item_inactive)
         binding.navBtnCategories.setBackgroundResource(com.example.e_commerce.R.drawable.bg_nav_item_inactive)
         binding.navBtnOrders.setBackgroundResource(com.example.e_commerce.R.drawable.bg_nav_item_inactive)
         binding.navBtnSettings.setBackgroundResource(com.example.e_commerce.R.drawable.bg_nav_item_inactive)
@@ -74,10 +67,9 @@ class HomeActivity : BaseActivity(){
         // Activar el item seleccionado
         when (position) {
             0 -> binding.navBtnExplore.setBackgroundResource(com.example.e_commerce.R.drawable.bg_nav_item_active)
-            1 -> binding.navBtnProfile.setBackgroundResource(com.example.e_commerce.R.drawable.bg_nav_item_active)
-            2 -> binding.navBtnCategories.setBackgroundResource(com.example.e_commerce.R.drawable.bg_nav_item_active)
-            3 -> binding.navBtnOrders.setBackgroundResource(com.example.e_commerce.R.drawable.bg_nav_item_active)
-            4 -> binding.navBtnSettings.setBackgroundResource(com.example.e_commerce.R.drawable.bg_nav_item_active)
+            1 -> binding.navBtnCategories.setBackgroundResource(com.example.e_commerce.R.drawable.bg_nav_item_active)
+            2 -> binding.navBtnOrders.setBackgroundResource(com.example.e_commerce.R.drawable.bg_nav_item_active)
+            3 -> binding.navBtnSettings.setBackgroundResource(com.example.e_commerce.R.drawable.bg_nav_item_active)
         }
     }
 

@@ -118,7 +118,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_marginStart="8dp"
-                    android:background="@drawable/background_bg"
+                    android:background="@color/cardview_dark_background"
                     android:text="Guardar Cambios" />
             </LinearLayout>
 

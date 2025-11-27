@@ -31,6 +31,209 @@
                 android:fontFamily="sans-serif-medium"
                 android:textStyle="bold" />
 
+            <!-- Card del perfil de usuario -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_xl"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="@dimen/elevation_sm"
+                app:cardBackgroundColor="@color/white"
+                app:strokeColor="@color/gray_300"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding_xl">
+
+                    <!-- Avatar y nombre -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="14dp"
+                        android:layout_marginTop="24dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <!-- Avatar circular -->
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="@dimen/avatar_size_lg"
+                            android:layout_height="@dimen/avatar_size_lg"
+                            app:cardBackgroundColor="@color/gray_200"
+                            app:cardCornerRadius="@dimen/corner_radius_full"
+                            app:cardElevation="0dp">
+
+                            <TextView
+                                android:id="@+id/tvAvatarInitial"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:text="U"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/text_size_headline"
+                                android:fontFamily="sans-serif-medium"
+                                android:textStyle="bold" />
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <!-- Nombre y rol -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:maxLines="2"
+                                android:text="Nombre Usuario"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/text_size_xl"
+                                android:fontFamily="sans-serif-medium"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvRole"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_xs"
+                                android:text="Rol: Usuario"
+                                android:textColor="@color/gray_600"
+                                android:textSize="@dimen/text_size_sm" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!-- Divisor -->
+                    <View
+                        style="@style/Divider"
+                        android:layout_marginVertical="@dimen/spacing_lg"
+                        android:background="@color/gray_200" />
+
+                    <!-- Información de contacto -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/spacing_md"
+                        android:text="Información de Contacto"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_lg"
+                        android:fontFamily="sans-serif-medium"
+                        android:textStyle="bold" />
+
+                    <!-- Email -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/spacing_md"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Email"
+                            android:textColor="@color/gray_600"
+                            android:textSize="@dimen/text_size_sm"
+                            android:layout_marginBottom="@dimen/spacing_xs" />
+
+                        <TextView
+                            android:id="@+id/tvEmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="email@ejemplo.com"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_md" />
+
+                    </LinearLayout>
+
+                    <!-- Teléfono -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/spacing_md"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Teléfono"
+                            android:textColor="@color/gray_600"
+                            android:textSize="@dimen/text_size_sm"
+                            android:layout_marginBottom="@dimen/spacing_xs" />
+
+                        <TextView
+                            android:id="@+id/tvPhone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="No registrado"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_md" />
+
+                    </LinearLayout>
+
+                    <!-- Dirección -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Dirección"
+                            android:textColor="@color/gray_600"
+                            android:textSize="@dimen/text_size_sm"
+                            android:layout_marginBottom="@dimen/spacing_xs" />
+
+                        <TextView
+                            android:id="@+id/tvAddress"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:maxLines="2"
+                            android:text="No registrada"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_md" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Botones de acción -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEditProfile"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginBottom="@dimen/spacing_md"
+                android:backgroundTint="@color/black"
+                android:text="Editar Perfil"
+                android:textSize="@dimen/text_size_md"
+                android:textColor="@color/white"
+                app:cornerRadius="@dimen/corner_radius_sm" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLogout"
+                style="@style/Widget.App.Button.Outlined"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginBottom="@dimen/spacing_xl"
+                android:backgroundTint="@android:color/transparent"
+                android:text="Cerrar Sesión"
+                android:textSize="@dimen/text_size_md"
+                android:textColor="@color/md_theme_error"
+                app:cornerRadius="@dimen/corner_radius_sm"
+                app:strokeColor="@color/md_theme_error"
+                app:strokeWidth="1dp" />
+
             <!-- Sección: Ajustes de tu espacio -->
             <TextView
                 android:layout_width="wrap_content"

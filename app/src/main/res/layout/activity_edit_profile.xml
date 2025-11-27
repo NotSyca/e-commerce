@@ -136,7 +136,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginBottom="16dp"
-                android:background="@drawable/background_bg"
+                android:background="@color/cardview_dark_background"
                 android:text="GUARDAR CAMBIOS"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
@@ -229,7 +229,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginBottom="16dp"
-                android:background="@drawable/background_bg"
+                android:background="@color/cardview_dark_background"
                 android:text="GUARDAR CAMBIOS"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
@@ -299,7 +299,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginBottom="32dp"
-                android:background="@drawable/background_bg"
+                android:background="@color/cardview_dark_background"
                 android:text="CAMBIAR CORREO"
                 android:textColor="@color/white"
                 android:textSize="18sp" />

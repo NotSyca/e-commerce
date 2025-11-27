@@ -65,31 +65,6 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/navBtnProfile"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:paddingVertical="@dimen/padding_sm"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="@dimen/icon_size_lg"
-                    android:layout_height="@dimen/icon_size_lg"
-                    android:layout_marginBottom="@dimen/spacing_xs"
-                    app:srcCompat="@drawable/btn_5"
-                    app:tint="@color/black"
-                    tools:ignore="ContentDescription" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Perfil"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_xs" />
-            </LinearLayout>
-
-            <LinearLayout
                 android:id="@+id/navBtnCategories"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

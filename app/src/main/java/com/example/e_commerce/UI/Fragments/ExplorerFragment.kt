@@ -77,6 +77,23 @@ class ExplorerFragment : Fragment() {
             val intent = Intent(requireContext(), CartActivity::class.java)
             startActivity(intent)
         }
+
+        // "Ver todos" de Grandes marcas -> Navegar a Categorías
+        binding.textView7.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, CategoriesFragment())
+                .addToBackStack(null)
+                .commit()
+        }
+
+        // "Ver todos" de Recomendaciones -> Mostrar todos los productos
+        binding.textView9.setOnClickListener {
+            val allProductsFragment = AllProductsFragment()
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, allProductsFragment)
+                .addToBackStack(null)
+                .commit()
+        }
     }
 
     private fun loadUserName() {
